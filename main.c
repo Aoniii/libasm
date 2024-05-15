@@ -32,40 +32,38 @@ int	main(int argc, char **argv)
 	char	*s4;
 	char	*s5;
 	void	*buf;
-
-	t_list *list;
-	list = ft_create_elem("Hello");
-	list->next = ft_create_elem("World");
-	printf("%s\n", (char *)list->next->data);
-	return (0);
+	t_list	*list;
 
 	if (argc < 2)
 	{
 		printf("Usage: ./a.out <test> [<params>]\n");
-		printf("%02i | %-9s | with word\n", 1, "strlen");
-		printf("%02i | %-9s | with null for strlen\n", 2, "strlen");
-		printf("%02i | %-9s | with null for ft_strlen\n", 3, "strlen");
-		printf("%02i | %-9s | basic copy\n", 4, "strcpy");
-		printf("%02i | %-9s | basic copy with adresse\n", 5, "strcpy");
-		printf("%02i | %-9s | with null source for strcpy\n", 6, "strcpy");
-		printf("%02i | %-9s | with null source for ft_strcpy\n", 7, "strcpy");
-		printf("%02i | %-9s | with null copy for strcpy\n", 8, "strcpy");
-		printf("%02i | %-9s | with null copy for ft_strcpy\n", 9, "strcpy");
-		printf("%02i | %-9s | basic comparaison\n", 10, "strcmp");
-		printf("%02i | %-9s | with null s1 for strcpy\n", 11, "strcmp");
-		printf("%02i | %-9s | with null s1 for ft_strcpy\n", 12, "strcmp");
-		printf("%02i | %-9s | with null s2 for strcpy\n", 13, "strcmp");
-		printf("%02i | %-9s | with null s2 for ft_strcpy\n", 14, "strcmp");
-		printf("%02i | %-9s | basic write\n", 15, "write");
-		printf("%02i | %-9s | basic ft_write\n", 16, "write");
-		printf("%02i | %-9s | basic both\n", 17, "write");
-		printf("%02i | %-9s | with null on write\n", 18, "write");
-		printf("%02i | %-9s | with null on ft_write\n", 19, "write");
-		printf("%02i | %-9s | basic read\n", 20, "read");
-		printf("%02i | %-9s | basic ft_read\n", 21, "read");
-		printf("%02i | %-9s | basic strdup\n", 22, "strdup");
-		printf("%02i | %-9s | basic ft_strdup\n", 23, "strdup");
-		printf("%02i | %-9s | atoi base\n", 24, "atoi base");
+		printf("%02i | %-11s | with word\n", 1, "strlen");
+		printf("%02i | %-11s | with null for strlen\n", 2, "strlen");
+		printf("%02i | %-11s | with null for ft_strlen\n", 3, "strlen");
+		printf("%02i | %-11s | basic copy\n", 4, "strcpy");
+		printf("%02i | %-11s | basic copy with adresse\n", 5, "strcpy");
+		printf("%02i | %-11s | with null source for strcpy\n", 6, "strcpy");
+		printf("%02i | %-11s | with null source for ft_strcpy\n", 7, "strcpy");
+		printf("%02i | %-11s | with null copy for strcpy\n", 8, "strcpy");
+		printf("%02i | %-11s | with null copy for ft_strcpy\n", 9, "strcpy");
+		printf("%02i | %-11s | basic comparaison\n", 10, "strcmp");
+		printf("%02i | %-11s | with null s1 for strcpy\n", 11, "strcmp");
+		printf("%02i | %-11s | with null s1 for ft_strcpy\n", 12, "strcmp");
+		printf("%02i | %-11s | with null s2 for strcpy\n", 13, "strcmp");
+		printf("%02i | %-11s | with null s2 for ft_strcpy\n", 14, "strcmp");
+		printf("%02i | %-11s | basic write\n", 15, "write");
+		printf("%02i | %-11s | basic ft_write\n", 16, "write");
+		printf("%02i | %-11s | basic both\n", 17, "write");
+		printf("%02i | %-11s | with null on write\n", 18, "write");
+		printf("%02i | %-11s | with null on ft_write\n", 19, "write");
+		printf("%02i | %-11s | basic read\n", 20, "read");
+		printf("%02i | %-11s | basic ft_read\n", 21, "read");
+		printf("%02i | %-11s | basic strdup\n", 22, "strdup");
+		printf("%02i | %-11s | basic ft_strdup\n", 23, "strdup");
+		printf("%02i | %-11s | atoi base\n", 24, "atoi base");
+		printf("%02i | %-11s | atoi base with null source\n", 25, "atoi base");
+		printf("%02i | %-11s | atoi base with null base\n", 26, "atoi base");
+		printf("%02i | %-11s | create elem\n", 27, "create elem");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -327,13 +325,41 @@ int	main(int argc, char **argv)
 	}
 	else if (test == 24)
 	{
-		s1 = "-42";
+		s1 = "42";
 		if (argc > 2)
 			s1 = argv[2];
 		s2 = "0123456789";
 		if (argc > 3)
 			s2 = argv[3];
 		printf("%i\n", ft_atoi_base(s1, s2));
+	}
+	else if (test == 25)
+	{
+		s2 = "0123456789";
+		if (argc > 3)
+			s2 = argv[3];
+		printf("%i\n", ft_atoi_base(NULL, s2));
+	}
+	else if (test == 26)
+	{
+		s1 = "42";
+		if (argc > 2)
+			s1 = argv[2];
+		printf("%i\n", ft_atoi_base(s1, NULL));
+	}
+	else if (test == 27)
+	{
+		s1 = "Hello";
+		if (argc > 2)
+			s1 = argv[2];
+		s2 = "World";
+		if (argc > 3)
+			s2 = argv[3];
+
+		list = ft_create_elem(s1);
+		list->next = ft_create_elem(s2);
+		printf("%s\n", (char *)list->data);
+		printf("%s\n", (char *)list->next->data);
 	}
 	return (0);
 }
