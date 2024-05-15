@@ -1,7 +1,12 @@
 NAME = libasm.a
 
-SRCS	= ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
-SRCS_B	= ft_atoi_base_bonus.s
+SRCS	=	sources/ft_strlen.s \
+			sources/ft_strcpy.s \
+			sources/ft_strcmp.s \
+			sources/ft_write.s \
+			sources/ft_read.s \
+			sources/ft_strdup.s
+SRCS_B	=	bonus/ft_atoi_base_bonus.s
 
 OBJS		= $(SRCS:.s=.o)
 OBJS_B		= $(SRCS_B:.s=.o)
