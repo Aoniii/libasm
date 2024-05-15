@@ -67,6 +67,8 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | create elem\n", 27, "create elem");
 		printf("%02i | %-15s | list push front\n", 28, "list push front");
 		printf("%02i | %-15s | list size\n", 29, "list size");
+		printf("%02i | %-15s | list last\n", 30, "list last");
+		printf("%02i | %-15s | list last with null\n", 31, "list last");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -414,9 +416,18 @@ int	main(int argc, char **argv)
 	}
 	else if (test == 30)
 	{
-		list1 = ft_create_elem("Je suis le dernier");
-		ft_list_push_front(&list1, "Je suis au milieu");
-		ft_list_push_front(&list1, "Je suis au debut");
+		s1 = "Je suis au debut";
+		if (argc > 2)
+			s1 = argv[2];
+		s2 = "Je suis au milieu";
+		if (argc > 3)
+			s2 = argv[3];
+		s3 = "Je suis le dernier";
+		if (argc > 4)
+			s3 = argv[4];
+		list1 = ft_create_elem(s3);
+		ft_list_push_front(&list1, s2);
+		ft_list_push_front(&list1, s1);
 		list2 = ft_list_last(list1);
 		printf("%s\n", (char *)list2->data);
 		while (list1) {
@@ -425,6 +436,11 @@ int	main(int argc, char **argv)
 			free(list2);
 			list2 = NULL;
 		}
+	}
+	else if (test == 31)
+	{
+		list1 = NULL;
+		list2 = ft_list_last(list1);
 	}
 	return (0);
 }
