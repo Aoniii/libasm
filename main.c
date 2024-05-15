@@ -66,9 +66,10 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | atoi base with null base\n", 26, "atoi base");
 		printf("%02i | %-15s | create elem\n", 27, "create elem");
 		printf("%02i | %-15s | list push front\n", 28, "list push front");
-		printf("%02i | %-15s | list size\n", 29, "list size");
-		printf("%02i | %-15s | list last\n", 30, "list last");
-		printf("%02i | %-15s | list last with null\n", 31, "list last");
+		printf("%02i | %-15s | list push front with null\n", 29, "list push front");
+		printf("%02i | %-15s | list size\n", 30, "list size");
+		printf("%02i | %-15s | list last\n", 31, "list last");
+		printf("%02i | %-15s | list last with null\n", 32, "list last");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -392,6 +393,19 @@ int	main(int argc, char **argv)
 	}
 	else if (test == 29)
 	{
+		s1 = "Hello";
+		if (argc > 2)
+			s1 = argv[2];
+		list1 = NULL;
+		ft_list_push_front(&list1, s1);
+		printf("%s\n", (char *)list1->data);
+		if (list1->next == NULL)
+			printf("list->next == null\n");
+		free(list1);
+		list1 = NULL;
+	}
+	else if (test == 30)
+	{
 		i1 = 3;
 		if (argc > 2)
 			i1 = atoi(argv[2]);
@@ -414,7 +428,7 @@ int	main(int argc, char **argv)
 			list2 = NULL;
 		}
 	}
-	else if (test == 30)
+	else if (test == 31)
 	{
 		s1 = "Je suis au debut";
 		if (argc > 2)
@@ -437,7 +451,7 @@ int	main(int argc, char **argv)
 			list2 = NULL;
 		}
 	}
-	else if (test == 31)
+	else if (test == 32)
 	{
 		list1 = NULL;
 		list2 = ft_list_last(list1);
