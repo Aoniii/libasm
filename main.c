@@ -65,6 +65,7 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | atoi base with null base\n", 26, "atoi base");
 		printf("%02i | %-15s | create elem\n", 27, "create elem");
 		printf("%02i | %-15s | list push front\n", 28, "list push front");
+		printf("%02i | %-15s | list size\n", 29, "list size");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -360,7 +361,6 @@ int	main(int argc, char **argv)
 		s2 = "World";
 		if (argc > 3)
 			s2 = argv[3];
-
 		list = ft_create_elem(s1);
 		list->next = ft_create_elem(s2);
 		printf("%s\n", (char *)list->data);
@@ -378,7 +378,6 @@ int	main(int argc, char **argv)
 		s2 = "World";
 		if (argc > 3)
 			s2 = argv[3];
-
 		list = ft_create_elem(s2);
 		ft_list_push_front(&list, s1);
 		printf("%s\n", (char *)list->data);
@@ -387,6 +386,31 @@ int	main(int argc, char **argv)
 		list->next = NULL;
 		free(list);
 		list = NULL;
+	}
+	else if (test == 29)
+	{
+		i1 = 3;
+		if (argc > 2)
+			i1 = atoi(argv[2]);
+		if (i1 > 0)
+		{
+			list = ft_create_elem("Hello");
+			while (i1 > 1)
+			{
+				ft_list_push_front(&list, "Hello");
+				i1--;
+			}
+		}
+		else
+			list = NULL;
+		printf("%i\n", ft_list_size(list));
+		while (list) {
+			t_list *tmp;
+			tmp = list;
+			list = list->next;
+			free(tmp);
+			tmp = NULL;
+		}
 	}
 	return (0);
 }
