@@ -32,7 +32,8 @@ int	main(int argc, char **argv)
 	char	*s4;
 	char	*s5;
 	void	*buf;
-	t_list	*list;
+	t_list	*list1;
+	t_list	*list2;
 
 	if (argc < 2)
 	{
@@ -361,14 +362,14 @@ int	main(int argc, char **argv)
 		s2 = "World";
 		if (argc > 3)
 			s2 = argv[3];
-		list = ft_create_elem(s1);
-		list->next = ft_create_elem(s2);
-		printf("%s\n", (char *)list->data);
-		printf("%s\n", (char *)list->next->data);
-		free(list->next);
-		list->next = NULL;
-		free(list);
-		list = NULL;
+		list1 = ft_create_elem(s1);
+		list1->next = ft_create_elem(s2);
+		printf("%s\n", (char *)list1->data);
+		printf("%s\n", (char *)list1->next->data);
+		free(list1->next);
+		list1->next = NULL;
+		free(list1);
+		list1 = NULL;
 	}
 	else if (test == 28)
 	{
@@ -378,14 +379,14 @@ int	main(int argc, char **argv)
 		s2 = "World";
 		if (argc > 3)
 			s2 = argv[3];
-		list = ft_create_elem(s2);
-		ft_list_push_front(&list, s1);
-		printf("%s\n", (char *)list->data);
-		printf("%s\n", (char *)list->next->data);
-		free(list->next);
-		list->next = NULL;
-		free(list);
-		list = NULL;
+		list1 = ft_create_elem(s2);
+		ft_list_push_front(&list1, s1);
+		printf("%s\n", (char *)list1->data);
+		printf("%s\n", (char *)list1->next->data);
+		free(list1->next);
+		list1->next = NULL;
+		free(list1);
+		list1 = NULL;
 	}
 	else if (test == 29)
 	{
@@ -394,22 +395,35 @@ int	main(int argc, char **argv)
 			i1 = atoi(argv[2]);
 		if (i1 > 0)
 		{
-			list = ft_create_elem("Hello");
+			list1 = ft_create_elem("Hello");
 			while (i1 > 1)
 			{
-				ft_list_push_front(&list, "Hello");
+				ft_list_push_front(&list1, "Hello");
 				i1--;
 			}
 		}
 		else
-			list = NULL;
-		printf("%i\n", ft_list_size(list));
-		while (list) {
-			t_list *tmp;
-			tmp = list;
-			list = list->next;
-			free(tmp);
-			tmp = NULL;
+			list1 = NULL;
+		printf("%i\n", ft_list_size(list1));
+		while (list1) {
+			list2 = list1;
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
+		}
+	}
+	else if (test == 30)
+	{
+		list1 = ft_create_elem("Je suis le dernier");
+		ft_list_push_front(&list1, "Je suis au milieu");
+		ft_list_push_front(&list1, "Je suis au debut");
+		list2 = ft_list_last(list1);
+		printf("%s\n", (char *)list2->data);
+		while (list1) {
+			list2 = list1;
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
 		}
 	}
 	return (0);
