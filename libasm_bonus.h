@@ -21,6 +21,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int	ft_atoi_base(char *str, char *base);
+int		ft_atoi_base(char *str, char *base);
+t_list	*ft_create_elem(void *data);
 
 #endif

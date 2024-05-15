@@ -33,6 +33,12 @@ int	main(int argc, char **argv)
 	char	*s5;
 	void	*buf;
 
+	t_list *list;
+	list = ft_create_elem("Hello");
+	list->next = ft_create_elem("World");
+	printf("%s\n", (char *)list->next->data);
+	return (0);
+
 	if (argc < 2)
 	{
 		printf("Usage: ./a.out <test> [<params>]\n");

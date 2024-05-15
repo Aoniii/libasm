@@ -6,7 +6,8 @@ SRCS	=	sources/ft_strlen.s \
 			sources/ft_write.s \
 			sources/ft_read.s \
 			sources/ft_strdup.s
-SRCS_B	=	bonus/ft_atoi_base_bonus.s
+SRCS_B	=	bonus/ft_atoi_base_bonus.s \
+			bonus/ft_create_elem_bonus.s
 
 OBJS		= $(SRCS:.s=.o)
 OBJS_B		= $(SRCS_B:.s=.o)
