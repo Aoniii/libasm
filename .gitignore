@@ -1,2 +1,5 @@
 .libasmTester
 .vscode
+/objects
+a.out
+libasm.a
