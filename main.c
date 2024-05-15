@@ -37,33 +37,34 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 	{
 		printf("Usage: ./a.out <test> [<params>]\n");
-		printf("%02i | %-11s | with word\n", 1, "strlen");
-		printf("%02i | %-11s | with null for strlen\n", 2, "strlen");
-		printf("%02i | %-11s | with null for ft_strlen\n", 3, "strlen");
-		printf("%02i | %-11s | basic copy\n", 4, "strcpy");
-		printf("%02i | %-11s | basic copy with adresse\n", 5, "strcpy");
-		printf("%02i | %-11s | with null source for strcpy\n", 6, "strcpy");
-		printf("%02i | %-11s | with null source for ft_strcpy\n", 7, "strcpy");
-		printf("%02i | %-11s | with null copy for strcpy\n", 8, "strcpy");
-		printf("%02i | %-11s | with null copy for ft_strcpy\n", 9, "strcpy");
-		printf("%02i | %-11s | basic comparaison\n", 10, "strcmp");
-		printf("%02i | %-11s | with null s1 for strcpy\n", 11, "strcmp");
-		printf("%02i | %-11s | with null s1 for ft_strcpy\n", 12, "strcmp");
-		printf("%02i | %-11s | with null s2 for strcpy\n", 13, "strcmp");
-		printf("%02i | %-11s | with null s2 for ft_strcpy\n", 14, "strcmp");
-		printf("%02i | %-11s | basic write\n", 15, "write");
-		printf("%02i | %-11s | basic ft_write\n", 16, "write");
-		printf("%02i | %-11s | basic both\n", 17, "write");
-		printf("%02i | %-11s | with null on write\n", 18, "write");
-		printf("%02i | %-11s | with null on ft_write\n", 19, "write");
-		printf("%02i | %-11s | basic read\n", 20, "read");
-		printf("%02i | %-11s | basic ft_read\n", 21, "read");
-		printf("%02i | %-11s | basic strdup\n", 22, "strdup");
-		printf("%02i | %-11s | basic ft_strdup\n", 23, "strdup");
-		printf("%02i | %-11s | atoi base\n", 24, "atoi base");
-		printf("%02i | %-11s | atoi base with null source\n", 25, "atoi base");
-		printf("%02i | %-11s | atoi base with null base\n", 26, "atoi base");
-		printf("%02i | %-11s | create elem\n", 27, "create elem");
+		printf("%02i | %-15s | with word\n", 1, "strlen");
+		printf("%02i | %-15s | with null for strlen\n", 2, "strlen");
+		printf("%02i | %-15s | with null for ft_strlen\n", 3, "strlen");
+		printf("%02i | %-15s | basic copy\n", 4, "strcpy");
+		printf("%02i | %-15s | basic copy with adresse\n", 5, "strcpy");
+		printf("%02i | %-15s | with null source for strcpy\n", 6, "strcpy");
+		printf("%02i | %-15s | with null source for ft_strcpy\n", 7, "strcpy");
+		printf("%02i | %-15s | with null copy for strcpy\n", 8, "strcpy");
+		printf("%02i | %-15s | with null copy for ft_strcpy\n", 9, "strcpy");
+		printf("%02i | %-15s | basic comparaison\n", 10, "strcmp");
+		printf("%02i | %-15s | with null s1 for strcpy\n", 11, "strcmp");
+		printf("%02i | %-15s | with null s1 for ft_strcpy\n", 12, "strcmp");
+		printf("%02i | %-15s | with null s2 for strcpy\n", 13, "strcmp");
+		printf("%02i | %-15s | with null s2 for ft_strcpy\n", 14, "strcmp");
+		printf("%02i | %-15s | basic write\n", 15, "write");
+		printf("%02i | %-15s | basic ft_write\n", 16, "write");
+		printf("%02i | %-15s | basic both\n", 17, "write");
+		printf("%02i | %-15s | with null on write\n", 18, "write");
+		printf("%02i | %-15s | with null on ft_write\n", 19, "write");
+		printf("%02i | %-15s | basic read\n", 20, "read");
+		printf("%02i | %-15s | basic ft_read\n", 21, "read");
+		printf("%02i | %-15s | basic strdup\n", 22, "strdup");
+		printf("%02i | %-15s | basic ft_strdup\n", 23, "strdup");
+		printf("%02i | %-15s | atoi base\n", 24, "atoi base");
+		printf("%02i | %-15s | atoi base with null source\n", 25, "atoi base");
+		printf("%02i | %-15s | atoi base with null base\n", 26, "atoi base");
+		printf("%02i | %-15s | create elem\n", 27, "create elem");
+		printf("%02i | %-15s | list push front\n", 28, "list push front");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -358,6 +359,20 @@ int	main(int argc, char **argv)
 
 		list = ft_create_elem(s1);
 		list->next = ft_create_elem(s2);
+		printf("%s\n", (char *)list->data);
+		printf("%s\n", (char *)list->next->data);
+	}
+	else if (test == 28)
+	{
+		s1 = "Hello";
+		if (argc > 2)
+			s1 = argv[2];
+		s2 = "World";
+		if (argc > 3)
+			s2 = argv[3];
+
+		list = ft_create_elem(s2);
+		ft_list_push_front(&list, s1);
 		printf("%s\n", (char *)list->data);
 		printf("%s\n", (char *)list->next->data);
 	}
