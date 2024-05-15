@@ -313,6 +313,8 @@ int	main(int argc, char **argv)
 		printf("source: \n%s\nadresse: %p\n", s1, s1);
 		printf("strdup: \n%s\nadresse: %p\n", s2, s2);
 		printf("Value of errno: %d\n", errno);
+		free(s2);
+		s2 = NULL;
 	}
 	else if (test == 23)
 	{
@@ -323,6 +325,8 @@ int	main(int argc, char **argv)
 		printf("source: \n%s\nadresse: %p\n", s1, s1);
 		printf("ft_strdup: \n%s\nadresse: %p\n", s2, s2);
 		printf("Value of errno: %d\n", errno);
+		free(s2);
+		s2 = NULL;
 	}
 	else if (test == 24)
 	{
@@ -361,6 +365,10 @@ int	main(int argc, char **argv)
 		list->next = ft_create_elem(s2);
 		printf("%s\n", (char *)list->data);
 		printf("%s\n", (char *)list->next->data);
+		free(list->next);
+		list->next = NULL;
+		free(list);
+		list = NULL;
 	}
 	else if (test == 28)
 	{
@@ -375,6 +383,10 @@ int	main(int argc, char **argv)
 		ft_list_push_front(&list, s1);
 		printf("%s\n", (char *)list->data);
 		printf("%s\n", (char *)list->next->data);
+		free(list->next);
+		list->next = NULL;
+		free(list);
+		list = NULL;
 	}
 	return (0);
 }

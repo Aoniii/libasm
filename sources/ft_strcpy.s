@@ -4,18 +4,18 @@ section .text
 	global ft_strcpy
 
 ft_strcpy:
-	xor rax, rax
+	xor rdx, rdx
 	jmp .loop
 
 .loop:
-	cmp byte [rsi + rax], 0
+	cmp byte [rsi + rdx], 0
 	je .end
-	mov rdx, [rsi + rax]
-	mov [rdi + rax], rdx
-	inc rax
+	mov al, [rsi + rdx]
+	mov [rdi + rdx], al
+	inc rdx
 	jmp .loop
 
 .end:
-	mov byte [rdi + rax], 0
+	mov byte [rdi + rdx], 0
 	mov rax, rdi
 	ret

@@ -6,6 +6,8 @@ section .text
 	global ft_atoi_base
 
 ft_atoi_base:
+	cmp rdi, 0
+	je .error
 	push rdi
 	mov rdi, rsi
 	pop rsi
