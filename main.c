@@ -66,10 +66,14 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | atoi base with null base\n", 26, "atoi base");
 		printf("%02i | %-15s | create elem\n", 27, "create elem");
 		printf("%02i | %-15s | list push front\n", 28, "list push front");
-		printf("%02i | %-15s | list push front with null\n", 29, "list push front");
-		printf("%02i | %-15s | list size\n", 30, "list size");
-		printf("%02i | %-15s | list last\n", 31, "list last");
-		printf("%02i | %-15s | list last with null\n", 32, "list last");
+		printf("%02i | %-15s | list push front with null *\n", 29, "list push front");
+		printf("%02i | %-15s | list push front with null **\n", 30, "list push front");
+		printf("%02i | %-15s | list size\n", 31, "list size");
+		printf("%02i | %-15s | list last\n", 32, "list last");
+		printf("%02i | %-15s | list last with null\n", 33, "list last");
+		printf("%02i | %-15s | list push back\n", 34, "list push back");
+		printf("%02i | %-15s | list push back with null *\n", 35, "list push back");
+		printf("%02i | %-15s | list push back with null **\n", 36, "list push back");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -382,8 +386,8 @@ int	main(int argc, char **argv)
 		s2 = "World";
 		if (argc > 3)
 			s2 = argv[3];
-		list1 = ft_create_elem(s2);
-		ft_list_push_front(&list1, s1);
+		list1 = ft_create_elem(s1);
+		ft_list_push_front(&list1, s2);
 		printf("%s\n", (char *)list1->data);
 		printf("%s\n", (char *)list1->next->data);
 		free(list1->next);
@@ -405,6 +409,10 @@ int	main(int argc, char **argv)
 		list1 = NULL;
 	}
 	else if (test == 30)
+	{
+		ft_list_push_front(NULL, "test");
+	}
+	else if (test == 31)
 	{
 		i1 = 3;
 		if (argc > 2)
@@ -428,7 +436,7 @@ int	main(int argc, char **argv)
 			list2 = NULL;
 		}
 	}
-	else if (test == 31)
+	else if (test == 32)
 	{
 		s1 = "Je suis au debut";
 		if (argc > 2)
@@ -451,10 +459,44 @@ int	main(int argc, char **argv)
 			list2 = NULL;
 		}
 	}
-	else if (test == 32)
+	else if (test == 33)
 	{
 		list1 = NULL;
 		list2 = ft_list_last(list1);
+	}
+	else if (test == 34)
+	{
+		s1 = "Hello";
+		if (argc > 2)
+			s1 = argv[2];
+		s2 = "World";
+		if (argc > 3)
+			s2 = argv[3];
+		list1 = ft_create_elem(s1);
+		ft_list_push_back(&list1, s2);
+		printf("%s\n", (char *)list1->data);
+		printf("%s\n", (char *)list1->next->data);
+		free(list1->next);
+		list1->next = NULL;
+		free(list1);
+		list1 = NULL;
+	}
+	else if (test == 35)
+	{
+		s1 = "Hello";
+		if (argc > 2)
+			s1 = argv[2];
+		list1 = NULL;
+		ft_list_push_back(&list1, s1);
+		printf("%s\n", (char *)list1->data);
+		if (list1->next == NULL)
+			printf("list->next == null\n");
+		free(list1);
+		list1 = NULL;
+	}
+	else if (test == 36)
+	{
+		ft_list_push_back(NULL, "test");
 	}
 	return (0);
 }

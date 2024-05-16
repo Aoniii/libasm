@@ -6,6 +6,8 @@ section .text
 	global ft_list_push_front
 
 ft_list_push_front:
+	cmp rdi, 0
+	je .error
 	push rdi
 	mov rdi, rsi
 	call ft_create_elem
