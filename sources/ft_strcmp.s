@@ -9,9 +9,9 @@ ft_strcmp:
 .loop:
 	mov al, byte [rdi]
 	mov bl, byte [rsi]
-	cmp al, 0
+	test al, al
 	je .end
-	cmp bl, 0
+	test bl, bl
 	je .end
 	cmp al, bl
 	jne .end
