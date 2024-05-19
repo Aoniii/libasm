@@ -10,7 +10,7 @@ ft_create_elem:
 	mov rdi, 16
 	call malloc
 	pop rdi
-	cmp rax, 0
+	test rax, rax
 	je .error
 	mov qword [rax], rdi
 	mov qword [rax + 8], 0

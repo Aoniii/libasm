@@ -7,21 +7,21 @@ section .text
 	global ft_list_push_back
 
 ft_list_push_back:
-	cmp rdi, 0
+	test rdi, rdi
 	je .error
 	push rdi
 	mov rdi, rsi
 	call ft_create_elem
 	pop rdi
-	cmp rax, 0
+	test rax, rax
 	je .error
 	mov rdx, rax
 	mov rax, [rdi]
-	cmp rax, 0
+	test rax, rax
 	je .insert_first
 	mov rdi, rax
 	call ft_list_last
-	cmp rax, 0
+	test rax, rax
 	je .error
 	mov qword [rdi + 8], rdx
 	xor rax, rax

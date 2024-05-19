@@ -8,7 +8,7 @@ ft_list_last:
 	jmp .loop
 
 .loop:
-	cmp rdi, 0
+	test rdi, rdi
 	je .error
 	cmp qword [rdi + 8], 0
 	je .ret

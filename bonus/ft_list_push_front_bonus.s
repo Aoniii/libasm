@@ -6,13 +6,13 @@ section .text
 	global ft_list_push_front
 
 ft_list_push_front:
-	cmp rdi, 0
+	test rdi, rdi
 	je .error
 	push rdi
 	mov rdi, rsi
 	call ft_create_elem
 	pop rdi
-	cmp rax, 0
+	test rax, rax
 	je .error
 	mov rsi, [rdi]
 	mov qword [rax + 8], rsi

@@ -8,7 +8,7 @@ section .text
 ft_write:
 	mov rax, 1
 	syscall
-	cmp rax, 0
+	test rax, rax
 	jl .error
 	ret
 

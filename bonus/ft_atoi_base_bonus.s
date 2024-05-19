@@ -6,12 +6,12 @@ section .text
 	global ft_atoi_base
 
 ft_atoi_base:
-	cmp rdi, 0
+	test rdi, rdi
 	je .error
 	push rdi
 	mov rdi, rsi
 	pop rsi
-	cmp rdi, 0
+	test rdi, rdi
 	je .error
 	call ft_strlen
 	cmp rax, 2
@@ -28,7 +28,7 @@ ft_atoi_base:
 
 .loop:
 	mov al, byte [rdi + rdx]
-	cmp al, 0
+	test al, al
 	je .sign
 	mov bl, byte [rdi + r9]
 	cmp al, 9
@@ -47,7 +47,7 @@ ft_atoi_base:
 	je .error
 	cmp al, 45
 	je .error
-	cmp bl, 0
+	test bl, bl
 	je .check_base
 	cmp al, bl
 	je .error
@@ -80,13 +80,13 @@ ft_atoi_base:
 	add r11, rdx
 	xor rdx, rdx
 	mov al, byte [rsi + r9]
-	cmp al, 0
+	test al, al
 	je .out
 	jmp .values
 
 .values:
 	mov bl, byte [rdi + rdx]
-	cmp bl, 0
+	test bl, bl
 	je .error
 	cmp al, bl
 	je .next

@@ -14,7 +14,7 @@ ft_strdup:
 	mov rdi, rax
 	inc rdi
 	call malloc
-	cmp rax, 0
+	test rax, rax
 	je .error
 	mov rdi, rax
 	pop rsi

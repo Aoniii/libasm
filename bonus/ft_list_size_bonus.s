@@ -8,7 +8,7 @@ ft_list_size:
 	jmp .loop
 
 .loop:
-	cmp rdi, 0
+	test rdi, rdi
 	je .ret
 	inc rax
 	mov rdi, qword [rdi + 8]
