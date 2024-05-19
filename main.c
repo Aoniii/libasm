@@ -74,6 +74,8 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | list push back\n", 34, "list push back");
 		printf("%02i | %-15s | list push back with null *\n", 35, "list push back");
 		printf("%02i | %-15s | list push back with null **\n", 36, "list push back");
+		printf("%02i | %-15s | list push strs\n", 37, "list push strs");
+		
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -497,6 +499,18 @@ int	main(int argc, char **argv)
 	else if (test == 36)
 	{
 		ft_list_push_back(NULL, "test");
+	}
+	else if (test == 37)
+	{
+		char **str = (char*[]){"Hello", "world", "!", NULL};
+		list1 = ft_list_push_strs(3, str);
+		while (list1) {
+			printf("%s\n", (char *)list1->data);
+			list2 = list1;
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
+		}
 	}
 	return (0);
 }

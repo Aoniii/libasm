@@ -11,7 +11,8 @@ SRCS_B	=	bonus/ft_atoi_base_bonus.s \
 			bonus/ft_list_push_front_bonus.s \
 			bonus/ft_list_size_bonus.s \
 			bonus/ft_list_last_bonus.s \
-			bonus/ft_list_push_back_bonus.s
+			bonus/ft_list_push_back_bonus.s \
+			bonus/ft_list_push_strs_bonus.s
 
 OBJS		= $(SRCS:.s=.o)
 OBJS_B		= $(SRCS_B:.s=.o)
