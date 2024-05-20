@@ -75,6 +75,7 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | list push back with null *\n", 35, "list push back");
 		printf("%02i | %-15s | list push back with null **\n", 36, "list push back");
 		printf("%02i | %-15s | list push strs\n", 37, "list push strs");
+		printf("%02i | %-15s | list clear\n", 37, "list clear");
 		
 		return (1);
 	}
@@ -431,7 +432,8 @@ int	main(int argc, char **argv)
 		else
 			list1 = NULL;
 		printf("%i\n", ft_list_size(list1));
-		while (list1) {
+		while (list1)
+		{
 			list2 = list1;
 			list1 = list1->next;
 			free(list2);
@@ -454,7 +456,8 @@ int	main(int argc, char **argv)
 		ft_list_push_front(&list1, s1);
 		list2 = ft_list_last(list1);
 		printf("%s\n", (char *)list2->data);
-		while (list1) {
+		while (list1)
+		{
 			list2 = list1;
 			list1 = list1->next;
 			free(list2);
@@ -504,7 +507,8 @@ int	main(int argc, char **argv)
 	{
 		char **str = (char*[]){"Hello", "world", "!", NULL};
 		list1 = ft_list_push_strs(3, str);
-		while (list1) {
+		while (list1)
+		{
 			printf("%s\n", (char *)list1->data);
 			list2 = list1;
 			list1 = list1->next;
@@ -519,6 +523,23 @@ int	main(int argc, char **argv)
 		ft_list_push_back(&list1, ft_strdup("World"));
 		ft_list_push_back(&list1, ft_strdup("!"));
 		ft_list_clear(list1, &free);
+	}
+	else if (test == 39)
+	{
+		char **str = (char*[]){"5", "4", "3", "2", "1", NULL};
+		list1 = ft_list_push_strs(5, str);
+		list2 = ft_list_at(list1, 1);
+		if (list2 != NULL)
+			printf("%s\n", (char *)list2->data);
+		else
+			printf("null\n");
+		while (list1)
+		{
+			list2 = list1;
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
+		}
 	}
 	return (0);
 }
