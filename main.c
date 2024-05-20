@@ -512,5 +512,15 @@ int	main(int argc, char **argv)
 			list2 = NULL;
 		}
 	}
+	else if (test == 38)
+	{
+		list1 = NULL;
+		ft_list_push_back(&list1, ft_strdup("Hello"));
+		ft_list_push_back(&list1, ft_strdup("World"));
+		ft_list_push_back(&list1, ft_strdup("!"));
+		ft_list_clear(list1, &free);
+	}
 	return (0);
 }
+
+
