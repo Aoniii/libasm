@@ -19,6 +19,11 @@
 #include <errno.h> 
 #include <fcntl.h>
 
+void print(void *s)
+{
+	printf("%s\n", (char *) s);
+}
+
 int	main(int argc, char **argv)
 {
 	int		test;
@@ -78,6 +83,8 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | list push strs\n", 37, "list push strs");
 		printf("%02i | %-15s | list clear\n", 38, "list clear");
 		printf("%02i | %-15s | list at\n", 39, "list at");
+		printf("%02i | %-15s | list reverse\n", 40, "list reverse");
+		printf("%02i | %-15s | list foreach\n", 41, "list foreach");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -565,6 +572,19 @@ int	main(int argc, char **argv)
 		while (list1)
 		{
 			printf("%s\n", (char *)list1->data);
+			list2 = list1;
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
+		}
+	}
+	else if (test == 41)
+	{
+		tab = (char *[]){"Hello", "world", "!", NULL};
+		list1 = ft_list_push_strs(3, tab);
+		ft_list_foreach(list1, &print);
+		while (list1)
+		{
 			list2 = list1;
 			list1 = list1->next;
 			free(list2);
