@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 	void	*buf;
 	t_list	*list1;
 	t_list	*list2;
+	char	**tab;
 
 	if (argc < 2)
 	{
@@ -75,8 +76,8 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | list push back with null *\n", 35, "list push back");
 		printf("%02i | %-15s | list push back with null **\n", 36, "list push back");
 		printf("%02i | %-15s | list push strs\n", 37, "list push strs");
-		printf("%02i | %-15s | list clear\n", 37, "list clear");
-		
+		printf("%02i | %-15s | list clear\n", 38, "list clear");
+		printf("%02i | %-15s | list at\n", 39, "list at");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -505,8 +506,8 @@ int	main(int argc, char **argv)
 	}
 	else if (test == 37)
 	{
-		char **str = (char*[]){"Hello", "world", "!", NULL};
-		list1 = ft_list_push_strs(3, str);
+		tab = (char *[]){"Hello", "world", "!", NULL};
+		list1 = ft_list_push_strs(3, tab);
 		while (list1)
 		{
 			printf("%s\n", (char *)list1->data);
@@ -526,9 +527,12 @@ int	main(int argc, char **argv)
 	}
 	else if (test == 39)
 	{
-		char **str = (char*[]){"5", "4", "3", "2", "1", NULL};
-		list1 = ft_list_push_strs(5, str);
-		list2 = ft_list_at(list1, 1);
+		tab = (char *[]){"5", "4", "3", "2", "1", NULL};
+		list1 = ft_list_push_strs(5, tab);
+		i1 = 1;
+		if (argc > 2)
+			i1 = atoi(argv[2]);
+		list2 = ft_list_at(list1, i1);
 		if (list2 != NULL)
 			printf("%s\n", (char *)list2->data);
 		else
@@ -541,7 +545,31 @@ int	main(int argc, char **argv)
 			list2 = NULL;
 		}
 	}
+	else if (test == 40)
+	{
+		i1 = 5;
+		if (argc > 2)
+			i1 = atoi(argv[2]);
+		tab = (char *[]){"1", "2", "3", "4", "5", NULL};
+		list1 = ft_list_push_strs(i1, tab);
+		list2 = list1;
+		printf("List before:\n");
+		while (list1)
+		{
+			printf("%s\n", (char *)list1->data);
+			list1 = list1->next;
+		}
+		list1 = list2;
+		ft_list_reverse(&list1);
+		printf("List after:\n");
+		while (list1)
+		{
+			printf("%s\n", (char *)list1->data);
+			list2 = list1;
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
+		}
+	}
 	return (0);
 }
-
-
