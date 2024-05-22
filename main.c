@@ -86,6 +86,7 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | list reverse\n", 40, "list reverse");
 		printf("%02i | %-15s | list foreach\n", 41, "list foreach");
 		printf("%02i | %-15s | list foreach if\n", 42, "list foreach if");
+		printf("%02i | %-15s | list find\n", 43, "list find");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -594,9 +595,32 @@ int	main(int argc, char **argv)
 	}
 	else if (test == 42)
 	{
+		s1 = "Hello";
+		if (argc > 2)
+			s1 = argv[2];
 		tab = (char *[]){"Hello", "world", "!", NULL};
 		list1 = ft_list_push_strs(3, tab);
-		ft_list_foreach_if(list1, &print, (char *)"Hello", &ft_strcmp);
+		ft_list_foreach_if(list1, &print, (char *)s1, &ft_strcmp);
+		while (list1)
+		{
+			list2 = list1;
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
+		}
+	}
+	else if (test == 43)
+	{
+		s1 = "Hello";
+		if (argc > 2)
+			s1 = argv[2];
+		tab = (char *[]){"Hello", "world", "!", NULL};
+		list1 = ft_list_push_strs(3, tab);
+		list2 = ft_list_find(list1, (char *)s1, &ft_strcmp);
+		if (list2 != NULL)
+			printf("%s\n", (char *)list2->data);
+		else
+			printf("null\n");
 		while (list1)
 		{
 			list2 = list1;
