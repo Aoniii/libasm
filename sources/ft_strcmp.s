@@ -4,23 +4,22 @@ section .text
 	global ft_strcmp
 
 ft_strcmp:
+	xor rcx, rcx
 	jmp .loop
 
 .loop:
-	mov al, byte [rdi]
-	mov bl, byte [rsi]
-	test al, al
+	cmp byte [rdi + rcx], 0
 	je .end
-	test bl, bl
+	cmp byte [rsi + rcx], 0
 	je .end
-	cmp al, bl
+	mov al, byte [rdi + rcx]
+	cmp al, byte [rsi + rcx]
 	jne .end
-	inc rdi
-	inc rsi
+	inc rcx
 	jmp .loop
 
 .end:
-	movzx rax, al
-	movzx rdx, bl
+	movzx rax, byte [rdi + rcx]
+	movzx rdx, byte [rsi + rcx]
 	sub rax, rdx
 	ret

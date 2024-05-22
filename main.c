@@ -85,6 +85,7 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | list at\n", 39, "list at");
 		printf("%02i | %-15s | list reverse\n", 40, "list reverse");
 		printf("%02i | %-15s | list foreach\n", 41, "list foreach");
+		printf("%02i | %-15s | list foreach if\n", 42, "list foreach if");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -583,6 +584,19 @@ int	main(int argc, char **argv)
 		tab = (char *[]){"Hello", "world", "!", NULL};
 		list1 = ft_list_push_strs(3, tab);
 		ft_list_foreach(list1, &print);
+		while (list1)
+		{
+			list2 = list1;
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
+		}
+	}
+	else if (test == 42)
+	{
+		tab = (char *[]){"Hello", "world", "!", NULL};
+		list1 = ft_list_push_strs(3, tab);
+		ft_list_foreach_if(list1, &print, (char *)"Hello", &ft_strcmp);
 		while (list1)
 		{
 			list2 = list1;
