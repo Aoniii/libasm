@@ -88,6 +88,9 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | list foreach if\n", 42, "list foreach if");
 		printf("%02i | %-15s | list find\n", 43, "list find");
 		printf("%02i | %-15s | list remove if\n", 44, "list remove if");
+		printf("%02i | %-15s | list merge\n", 45, "list merge");
+		printf("%02i | %-15s | list merge with null for list1\n", 46, "list merge");
+		printf("%02i | %-15s | list merge with null for list2\n", 47, "list merge");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -669,6 +672,49 @@ int	main(int argc, char **argv)
 			list1 = list1->next;
 		}
 		ft_list_clear(list2, &free);
+	}
+	else if (test == 45)
+	{
+		tab = (char *[]){"Hello", "world", "!", NULL};
+		list1 = ft_list_push_strs(3, tab);
+		tab = (char *[]){"Youpi", "c'est", "super", "!", NULL};
+		list2 = ft_list_push_strs(4, tab);
+		ft_list_merge(&list1, list2);
+		while (list1)
+		{
+			list2 = list1;
+			printf("%s\n", (char *)list1->data);
+			list1 = list1->next;
+			free(list2);
+		}
+	}
+	else if (test == 46)
+	{
+		list1 = NULL;
+		tab = (char *[]){"Hello", "world", "!", NULL};
+		list2 = ft_list_push_strs(3, tab);
+		ft_list_merge(&list1, list2);
+		while (list1)
+		{
+			list2 = list1;
+			printf("%s\n", (char *)list1->data);
+			list1 = list1->next;
+			free(list2);
+		}
+	}
+	else if (test == 47)
+	{
+		tab = (char *[]){"Hello", "world", "!", NULL};
+		list1 = ft_list_push_strs(3, tab);
+		list2 = NULL;
+		ft_list_merge(&list1, list2);
+		while (list1)
+		{
+			list2 = list1;
+			printf("%s\n", (char *)list1->data);
+			list1 = list1->next;
+			free(list2);
+		}
 	}
 	return (0);
 }
