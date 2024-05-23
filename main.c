@@ -87,6 +87,7 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | list foreach\n", 41, "list foreach");
 		printf("%02i | %-15s | list foreach if\n", 42, "list foreach if");
 		printf("%02i | %-15s | list find\n", 43, "list find");
+		printf("%02i | %-15s | list remove if\n", 44, "list remove if");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -628,6 +629,46 @@ int	main(int argc, char **argv)
 			free(list2);
 			list2 = NULL;
 		}
+	}
+	else if (test == 44)
+	{
+		s1 = "Hello";
+		if (argc > 2)
+			s1 = argv[2];
+		list1 = NULL;
+		if (argc > 3)
+		{
+			i1 = 3;
+			while (i1 < argc)
+			{
+				ft_list_push_back(&list1, ft_strdup(argv[i1]));
+				i1++;
+			}
+		}
+		else
+		{
+			ft_list_push_back(&list1, ft_strdup("Hello"));
+			ft_list_push_back(&list1, ft_strdup("World"));
+			ft_list_push_back(&list1, ft_strdup("!"));
+		}
+		
+		list2 = list1;
+		printf("List before:\n");
+		while (list1)
+		{
+			printf("%s\n", (char *)list1->data);
+			list1 = list1->next;
+		}
+		list1 = list2;
+		ft_list_remove_if(&list1, s1, &ft_strcmp, &free);
+		list2 = list1;
+		printf("List after:\n");
+		while (list1)
+		{
+			printf("%s\n", (char *)list1->data);
+			list1 = list1->next;
+		}
+		ft_list_clear(list2, &free);
 	}
 	return (0);
 }

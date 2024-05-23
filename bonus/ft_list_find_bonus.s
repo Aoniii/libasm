@@ -8,8 +8,8 @@ ft_list_find:
 	je .error
 	test rdx, rdx
 	je .error
-	mov r12, rsi ;data ref
-	mov r13, rdx ;cmp
+	mov r12, rsi
+	mov r13, rdx
 	jmp .loop
 
 .loop:
