@@ -92,6 +92,7 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | list merge with null for list1\n", 46, "list merge");
 		printf("%02i | %-15s | list merge with null for list2\n", 47, "list merge");
 		printf("%02i | %-15s | list sort\n", 48, "list sort");
+		printf("%02i | %-15s | list reverse fun\n", 49, "list reverse fun");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -570,7 +571,7 @@ int	main(int argc, char **argv)
 		printf("List before:\n");
 		while (list1)
 		{
-			printf("%s\n", (char *)list1->data);
+			printf("%p, %s\n", list1, (char *)list1->data);
 			list1 = list1->next;
 		}
 		list1 = list2;
@@ -578,7 +579,7 @@ int	main(int argc, char **argv)
 		printf("List after:\n");
 		while (list1)
 		{
-			printf("%s\n", (char *)list1->data);
+			printf("%p, %s\n", list1, (char *)list1->data);
 			list2 = list1;
 			list1 = list1->next;
 			free(list2);
@@ -736,6 +737,32 @@ int	main(int argc, char **argv)
 			printf("%p, %s\n", list1, (char *)list1->data);
 			list1 = list1->next;
 			free(list2);
+		}
+	}
+	else if (test == 49)
+	{
+		i1 = 5;
+		if (argc > 2)
+			i1 = atoi(argv[2]);
+		tab = (char *[]){"1", "2", "3", "4", "5", NULL};
+		list1 = ft_list_push_strs(i1, tab);
+		list2 = list1;
+		printf("List before:\n");
+		while (list1)
+		{
+			printf("%p, %s\n", list1, (char *)list1->data);
+			list1 = list1->next;
+		}
+		list1 = list2;
+		ft_list_reverse_fun(list1);
+		printf("List after:\n");
+		while (list1)
+		{
+			printf("%p, %s\n", list1, (char *)list1->data);
+			list2 = list1;
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
 		}
 	}
 	return (0);
