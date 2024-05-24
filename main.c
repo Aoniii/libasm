@@ -91,6 +91,7 @@ int	main(int argc, char **argv)
 		printf("%02i | %-15s | list merge\n", 45, "list merge");
 		printf("%02i | %-15s | list merge with null for list1\n", 46, "list merge");
 		printf("%02i | %-15s | list merge with null for list2\n", 47, "list merge");
+		printf("%02i | %-15s | list sort\n", 48, "list sort");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -654,7 +655,6 @@ int	main(int argc, char **argv)
 			ft_list_push_back(&list1, ft_strdup("World"));
 			ft_list_push_back(&list1, ft_strdup("!"));
 		}
-		
 		list2 = list1;
 		printf("List before:\n");
 		while (list1)
@@ -712,6 +712,28 @@ int	main(int argc, char **argv)
 		{
 			list2 = list1;
 			printf("%s\n", (char *)list1->data);
+			list1 = list1->next;
+			free(list2);
+		}
+	}
+	else if (test == 48)
+	{
+		tab = (char *[]){"q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m", NULL};
+		list1 = ft_list_push_strs(26, tab);
+		list2 = list1;
+		printf("List before:\n");
+		while (list1)
+		{
+			printf("%p, %s\n", list1, (char *)list1->data);
+			list1 = list1->next;
+		}
+		list1 = list2;
+		ft_list_sort(&list1, &ft_strcmp);
+		printf("List after:\n");
+		while (list1)
+		{
+			list2 = list1;
+			printf("%p, %s\n", list1, (char *)list1->data);
 			list1 = list1->next;
 			free(list2);
 		}
