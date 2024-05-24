@@ -765,5 +765,22 @@ int	main(int argc, char **argv)
 			list2 = NULL;
 		}
 	}
+	else if (test == 50)
+	{
+		s1 = "g";
+		if (argc > 2)
+			s1 = argv[2];
+		tab = (char *[]){"z", "y", "f", "b", "a", NULL};
+		list1 = ft_list_push_strs(5, tab);
+		ft_sorted_list_insert(&list1, s1, &ft_strcmp);
+		while (list1)
+		{
+			list2 = list1;
+			printf("%s\n", (char *)list1->data);
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
+		}
+	}
 	return (0);
 }
