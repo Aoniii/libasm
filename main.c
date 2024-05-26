@@ -39,60 +39,63 @@ int	main(int argc, char **argv)
 	void	*buf;
 	t_list	*list1;
 	t_list	*list2;
+	t_list	*list3;
 	char	**tab;
 
 	if (argc < 2)
 	{
 		printf("Usage: ./a.out <test> [<params>]\n");
-		printf("%02i | %-15s | with word\n", 1, "strlen");
-		printf("%02i | %-15s | with null for strlen\n", 2, "strlen");
-		printf("%02i | %-15s | with null for ft_strlen\n", 3, "strlen");
-		printf("%02i | %-15s | basic copy\n", 4, "strcpy");
-		printf("%02i | %-15s | basic copy with adresse\n", 5, "strcpy");
-		printf("%02i | %-15s | with null source for strcpy\n", 6, "strcpy");
-		printf("%02i | %-15s | with null source for ft_strcpy\n", 7, "strcpy");
-		printf("%02i | %-15s | with null copy for strcpy\n", 8, "strcpy");
-		printf("%02i | %-15s | with null copy for ft_strcpy\n", 9, "strcpy");
-		printf("%02i | %-15s | basic comparaison\n", 10, "strcmp");
-		printf("%02i | %-15s | with null s1 for strcpy\n", 11, "strcmp");
-		printf("%02i | %-15s | with null s1 for ft_strcpy\n", 12, "strcmp");
-		printf("%02i | %-15s | with null s2 for strcpy\n", 13, "strcmp");
-		printf("%02i | %-15s | with null s2 for ft_strcpy\n", 14, "strcmp");
-		printf("%02i | %-15s | basic write\n", 15, "write");
-		printf("%02i | %-15s | basic ft_write\n", 16, "write");
-		printf("%02i | %-15s | basic both\n", 17, "write");
-		printf("%02i | %-15s | with null on write\n", 18, "write");
-		printf("%02i | %-15s | with null on ft_write\n", 19, "write");
-		printf("%02i | %-15s | basic read\n", 20, "read");
-		printf("%02i | %-15s | basic ft_read\n", 21, "read");
-		printf("%02i | %-15s | basic strdup\n", 22, "strdup");
-		printf("%02i | %-15s | basic ft_strdup\n", 23, "strdup");
-		printf("%02i | %-15s | atoi base\n", 24, "atoi base");
-		printf("%02i | %-15s | atoi base with null source\n", 25, "atoi base");
-		printf("%02i | %-15s | atoi base with null base\n", 26, "atoi base");
-		printf("%02i | %-15s | create elem\n", 27, "create elem");
-		printf("%02i | %-15s | list push front\n", 28, "list push front");
-		printf("%02i | %-15s | list push front with null *\n", 29, "list push front");
-		printf("%02i | %-15s | list push front with null **\n", 30, "list push front");
-		printf("%02i | %-15s | list size\n", 31, "list size");
-		printf("%02i | %-15s | list last\n", 32, "list last");
-		printf("%02i | %-15s | list last with null\n", 33, "list last");
-		printf("%02i | %-15s | list push back\n", 34, "list push back");
-		printf("%02i | %-15s | list push back with null *\n", 35, "list push back");
-		printf("%02i | %-15s | list push back with null **\n", 36, "list push back");
-		printf("%02i | %-15s | list push strs\n", 37, "list push strs");
-		printf("%02i | %-15s | list clear\n", 38, "list clear");
-		printf("%02i | %-15s | list at\n", 39, "list at");
-		printf("%02i | %-15s | list reverse\n", 40, "list reverse");
-		printf("%02i | %-15s | list foreach\n", 41, "list foreach");
-		printf("%02i | %-15s | list foreach if\n", 42, "list foreach if");
-		printf("%02i | %-15s | list find\n", 43, "list find");
-		printf("%02i | %-15s | list remove if\n", 44, "list remove if");
-		printf("%02i | %-15s | list merge\n", 45, "list merge");
-		printf("%02i | %-15s | list merge with null for list1\n", 46, "list merge");
-		printf("%02i | %-15s | list merge with null for list2\n", 47, "list merge");
-		printf("%02i | %-15s | list sort\n", 48, "list sort");
-		printf("%02i | %-15s | list reverse fun\n", 49, "list reverse fun");
+		printf("%02i | %-18s | with word\n", 1, "strlen");
+		printf("%02i | %-18s | with null for strlen\n", 2, "strlen");
+		printf("%02i | %-18s | with null for ft_strlen\n", 3, "strlen");
+		printf("%02i | %-18s | basic copy\n", 4, "strcpy");
+		printf("%02i | %-18s | basic copy with adresse\n", 5, "strcpy");
+		printf("%02i | %-18s | with null source for strcpy\n", 6, "strcpy");
+		printf("%02i | %-18s | with null source for ft_strcpy\n", 7, "strcpy");
+		printf("%02i | %-18s | with null copy for strcpy\n", 8, "strcpy");
+		printf("%02i | %-18s | with null copy for ft_strcpy\n", 9, "strcpy");
+		printf("%02i | %-18s | basic comparaison\n", 10, "strcmp");
+		printf("%02i | %-18s | with null s1 for strcpy\n", 11, "strcmp");
+		printf("%02i | %-18s | with null s1 for ft_strcpy\n", 12, "strcmp");
+		printf("%02i | %-18s | with null s2 for strcpy\n", 13, "strcmp");
+		printf("%02i | %-18s | with null s2 for ft_strcpy\n", 14, "strcmp");
+		printf("%02i | %-18s | basic write\n", 15, "write");
+		printf("%02i | %-18s | basic ft_write\n", 16, "write");
+		printf("%02i | %-18s | basic both\n", 17, "write");
+		printf("%02i | %-18s | with null on write\n", 18, "write");
+		printf("%02i | %-18s | with null on ft_write\n", 19, "write");
+		printf("%02i | %-18s | basic read\n", 20, "read");
+		printf("%02i | %-18s | basic ft_read\n", 21, "read");
+		printf("%02i | %-18s | basic strdup\n", 22, "strdup");
+		printf("%02i | %-18s | basic ft_strdup\n", 23, "strdup");
+		printf("%02i | %-18s | atoi base\n", 24, "atoi base");
+		printf("%02i | %-18s | atoi base with null source\n", 25, "atoi base");
+		printf("%02i | %-18s | atoi base with null base\n", 26, "atoi base");
+		printf("%02i | %-18s | create elem\n", 27, "create elem");
+		printf("%02i | %-18s | list push front\n", 28, "list push front");
+		printf("%02i | %-18s | list push front with null *\n", 29, "list push front");
+		printf("%02i | %-18s | list push front with null **\n", 30, "list push front");
+		printf("%02i | %-18s | list size\n", 31, "list size");
+		printf("%02i | %-18s | list last\n", 32, "list last");
+		printf("%02i | %-18s | list last with null\n", 33, "list last");
+		printf("%02i | %-18s | list push back\n", 34, "list push back");
+		printf("%02i | %-18s | list push back with null *\n", 35, "list push back");
+		printf("%02i | %-18s | list push back with null **\n", 36, "list push back");
+		printf("%02i | %-18s | list push strs\n", 37, "list push strs");
+		printf("%02i | %-18s | list clear\n", 38, "list clear");
+		printf("%02i | %-18s | list at\n", 39, "list at");
+		printf("%02i | %-18s | list reverse\n", 40, "list reverse");
+		printf("%02i | %-18s | list foreach\n", 41, "list foreach");
+		printf("%02i | %-18s | list foreach if\n", 42, "list foreach if");
+		printf("%02i | %-18s | list find\n", 43, "list find");
+		printf("%02i | %-18s | list remove if\n", 44, "list remove if");
+		printf("%02i | %-18s | list merge\n", 45, "list merge");
+		printf("%02i | %-18s | list merge with null for list1\n", 46, "list merge");
+		printf("%02i | %-18s | list merge with null for list2\n", 47, "list merge");
+		printf("%02i | %-18s | list sort\n", 48, "list sort");
+		printf("%02i | %-18s | list reverse fun\n", 49, "list reverse fun");
+		printf("%02i | %-18s | sorted list insert\n", 50, "sorted list insert");
+		printf("%02i | %-18s | sorted list merge\n", 51, "sorted list merge");
 		return (1);
 	}
 	test = atoi(argv[1]);
@@ -771,8 +774,42 @@ int	main(int argc, char **argv)
 		if (argc > 2)
 			s1 = argv[2];
 		tab = (char *[]){"z", "y", "f", "b", "a", NULL};
-		list1 = ft_list_push_strs(5, tab);
+		list1 = NULL;
 		ft_sorted_list_insert(&list1, s1, &ft_strcmp);
+		while (list1)
+		{
+			list2 = list1;
+			printf("%s\n", (char *)list1->data);
+			list1 = list1->next;
+			free(list2);
+			list2 = NULL;
+		}
+	}
+	else if (test == 51)
+	{
+		s1 = "g";
+		if (argc > 2)
+			s1 = argv[2];
+		tab = (char *[]){"i", "g", "e", "c", "a", NULL};
+		list1 = ft_list_push_strs(5, tab);
+		tab = (char *[]){"j", "h", "f", "d", "b", NULL};
+		list2 = ft_list_push_strs(5, tab);
+		printf("List 1:\n");
+		list3 = list1;
+		while (list3)
+		{
+			printf("%s\n", (char *)list3->data);
+			list3 = list3->next;
+		}
+		printf("List 2:\n");
+		list3 = list2;
+		while (list3)
+		{
+			printf("%s\n", (char *)list3->data);
+			list3 = list3->next;
+		}
+		ft_sorted_list_merge(&list1, list2, &ft_strcmp);
+		printf("List 3:\n");
 		while (list1)
 		{
 			list2 = list1;

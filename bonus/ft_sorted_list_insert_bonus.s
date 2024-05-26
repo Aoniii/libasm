@@ -35,14 +35,14 @@ ft_sorted_list_insert:
 	mov rsi, [rbp - 16]
 	call [rbp - 24]
 	cmp rax, 0
-	jg .swap
+	jg .insert
 	mov r12, r13
 	mov r13, [r13 + 8]
 	test r13, r13
 	je .last
 	jmp .loop
 
-.swap:
+.insert:
 	mov [r14 + 8], r13
 	test r12, r12
 	je .first
